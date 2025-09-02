@@ -8,9 +8,16 @@ app.listen(4000, ()=> {
 
 app.post("/post", async(req, res)=> {
   console.log(req.body);
-
   const {data} = req.body;
-  if(data == "cool"){
-    res.send({status:'Abee Cool'});
+
+  try {
+    if(data == "cool"){
+      res.send({status: "Abee Cool"});
+    } else {
+      res.send({status: "User not found"});
+    }
+  } catch (error) {
+    res.send({status: "Error"});
   }
+
 });
